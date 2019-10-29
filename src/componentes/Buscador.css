@@ -1,0 +1,43 @@
+.Buscador {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+p {
+  color: #cccccc;
+}
+
+ul.categorias {
+  list-style: none;
+  text-align: left;
+  min-width: 100%;
+}
+
+ul.categorias li {
+  margin-bottom: 2px;
+}
+
+ul.categorias li a {
+  font-size: 0.5em;
+  background: #222222;
+  width: 100%;
+  display: block;
+  padding: 5px 20px;
+  color: #ffffff;
+  transition: all 0.5s;
+}
+
+ul.categorias li a:hover {
+  text-decoration: none;
+  background-color: #373c46;
+}

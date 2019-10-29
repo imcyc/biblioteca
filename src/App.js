@@ -22,11 +22,9 @@ class App extends Component {
   render() {
     return (
       <HashRouter basename='/'>
-        
-          <div className="App">
-            <header className="App-header">
-            <Switch>
-              <Route 
+          <div>
+              <Switch>
+                <Route 
                   exact 
                   path="/" 
                   render={(props) => <Inicio {...props} 
@@ -40,9 +38,7 @@ class App extends Component {
                     />}
                 />
               </Switch>
-            </header>
           </div>
-        
       </HashRouter>
     );
   }
