@@ -8,7 +8,11 @@ import './App.css';
 class App extends Component {
 
   state = {
-    categorias: []
+    categorias: [],
+    categoria: [],
+    tituloSeccion: false,
+    nombreSeccion: '',
+    docNombre: ''
   }
 
   componentDidMount(){
@@ -17,6 +21,30 @@ class App extends Component {
         const categorias = res.data;
         this.setState({ categorias });
       })
+  }
+
+  categoriaClick = (categoria) => {
+    console.log(categoria);
+    this.setState({
+      nombreSeccion: categoria
+    })
+    axios.get(`http://imcyc.com/biblioteca/documento.php?categoria=${categoria}`)
+      .then(res => {
+        const categoria = res.data;
+        this.setState({ 
+          categoria: categoria,
+          tituloSeccion: true
+        });
+      })
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  documentoClick = (categoria) => {
+    console.log(categoria);
+    this.setState({
+      docNombre: categoria
+    });
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   render() {
@@ -35,6 +63,12 @@ class App extends Component {
                   path="/buscador" 
                   render={(props) => <Buscador {...props} 
                     categorias={this.state.categorias}
+                    categoriaClick={this.categoriaClick}
+                    categoria={this.state.categoria}
+                    tituloSeccion={this.state.tituloSeccion}
+                    nombreSeccion={this.state.nombreSeccion}
+                    docNombre={this.state.docNombre}
+                    documentoClick={this.documentoClick}
                     />}
                 />
               </Switch>
