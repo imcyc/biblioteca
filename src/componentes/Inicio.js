@@ -9,7 +9,6 @@ const Inicio = () => {
       <div className="wrapper fadeInDown">
         <div id="formContent">
           <div className="fadeIn first">
-            
             <img src={Logo} id="icon" alt="Instituto Mexicano del Cemento y del Concreto A.C." title="Instituto Mexicano del Cemento y del Concreto A.C." style={{width: '200px',margin:'15px'}} />
             <h3>BIBLIOTECA DIGITAL</h3>
             <p>Instituto Mexicano del Cemento y del Concreto A.C.</p>
