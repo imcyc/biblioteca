@@ -2,6 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Logo from '../logo.svg';
 
 import './Buscador.css';
 
@@ -11,6 +12,7 @@ const Buscador = (props) => {
       <Container fluid={true}>
         <Row>
           <Col md={12} className="text-center">
+            <img src={Logo} id="icon" alt="Instituto Mexicano del Cemento y del Concreto A.C." title="Instituto Mexicano del Cemento y del Concreto A.C." style={{width: '200px',margin:'15px'}} />
             <h3>ACERVO DIGITAL</h3>
             <p>Instituto Mexicano del Cemento y del Concreto A.C.</p>
             <hr/>
