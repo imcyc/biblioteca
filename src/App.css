@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,900&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App-logo {
@@ -19,4 +22,9 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
 }
