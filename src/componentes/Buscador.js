@@ -21,7 +21,10 @@ class Buscador extends Component {
   }
 
   onDocumentLoadSuccess = ({ numPages }) => {
-    this.setState({ numPages });
+    this.setState({ 
+      numPages: numPages,
+      pageNumber: 1
+    });
   };
 
   goToPrevPage = () =>
