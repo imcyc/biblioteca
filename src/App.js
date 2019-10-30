@@ -26,7 +26,8 @@ class App extends Component {
   categoriaClick = (categoria) => {
     console.log(categoria);
     this.setState({
-      nombreSeccion: categoria
+      nombreSeccion: categoria,
+      docNombre: ''
     })
     axios.get(`http://imcyc.com/biblioteca/documento.php?categoria=${categoria}`)
       .then(res => {
