@@ -88,3 +88,24 @@ h3.docseccion {
 .react-pdf__message.react-pdf__message--error {
   display: none;
 }
+
+.entrada {
+  background-color: #282c34;
+  background:url('../images/bkg.png') center center;
+  background-size: cover;
+  padding: 100px 0;
+  /*-webkit-mask-image:-webkit-gradient(linear, top, bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));*/
+}
+
+.entrada h3 {
+  font-size: 3em;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+.entrada h4 {
+  font-size: 1em;
+  font-weight: 100;
+  color: #ffffff;
+}

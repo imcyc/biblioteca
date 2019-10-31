@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import Container from 'react-bootstrap/Container';
+import Entrada from './Banners/Entrada';
+import Search from './Search/Search';
+import Categorias from './Categorias';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Logo from '../logo.svg';
 
 import './Buscador.css';
 
@@ -32,6 +35,8 @@ class Buscador extends Component {
   goToNextPage = () =>
     this.setState(state => ({ pageNumber: state.pageNumber + 1 }));
 
+
+
   render() {
     const { pageNumber, numPages } = this.state;
     // Fibras%20de%20Acero
@@ -39,21 +44,37 @@ class Buscador extends Component {
     return (  
       <div className="Buscador">
         <Container fluid={true}>
+          <Entrada />
+          <Search />
+
           <Row>
-            <Col md={12} className="text-center">
-              <img src={Logo} id="icon" alt="Instituto Mexicano del Cemento y del Concreto A.C." title="Instituto Mexicano del Cemento y del Concreto A.C." style={{width: '200px',margin:'15px'}} />
-              <p>Instituto Mexicano del Cemento y del Concreto A.C.</p>
-              <h3>ACERVO DIGITAL</h3>
-              <hr/>
+            <Col md={12}>
+              
+              {this.props.categorias.map((categoria, key) => (
+                <Categorias key={key} seccion={categoria} />
+              ))}
+
+
+              {/*
+              
+              <ul>
+                {this.props.categorias.map((categoria, key) => (
+                  <li key={key}>{categoria}</li>
+                ))}
+              </ul>
+              */}
             </Col>
           </Row>
+
           <Row>
             <Col md={3}>
+              {/*
               <ul className="categorias">
                 {this.props.categorias.map((categoria, key) => (
                   <li key={key} onClick={() => this.props.categoriaClick(categoria)}>{categoria}</li>
                 ))}
               </ul>
+              */}
             </Col>
             <Col md={9}>
               <h2 style={{display: this.props.tituloSeccion ? 'block' : 'none'}}>DOCUMENTOS ENCONTRADOS</h2>
