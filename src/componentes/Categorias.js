@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ItemsCarousel from 'react-items-carousel';
-import axios from 'axios';
 
 import './Categorias.css';
 
@@ -12,21 +11,12 @@ class Categorias extends Component {
     super(props);
 
     this.state = {
+      activeItemIndex: 0,
       documentos: []
     }
   }
 
-  componentDidMount(){
-    axios.get('http://imcyc.com/biblioteca/apidocumentos.php')
-      .then(res => {
-        const docs = res.data;
-        this.setState(
-          { 
-            documentos: docs
-          }
-        );
-      })
-  }
+  
 
   changeActiveItem = (activeItemIndex) => this.setState({ activeItemIndex });
 
@@ -37,6 +27,7 @@ class Categorias extends Component {
       documentos,
     } = this.state;
 
+    //let category_id = documentos.map(documento => documento.category_id);
     let category_id = documentos.map(documento => documento.category_id);
     let name = documentos.map(documento => documento.name);
 
@@ -45,15 +36,13 @@ class Categorias extends Component {
       <div>
         <h1 className="titCategoria"><i className="material-icons">keyboard_arrow_right</i> {this.props.categoria}</h1>
         <p>{this.props.idCategoria}</p>
-
-        {this.props.idCategoria == category_id ? 
-
+        {category_id} contra {this.props.idCategoria}
         <ItemsCarousel
           enablePlaceholder
           numberOfPlaceholderItems={5}
           minimumPlaceholderTime={1000}
           placeholderItem={<div style={{ height: 200, background: '#900' }}>Placeholder</div>}
-          numberOfCards={3}
+          numberOfCards={4}
           gutter={12}
           showSlither={true}
           firstAndLastGutter={true}
@@ -68,12 +57,6 @@ class Categorias extends Component {
         >
           {name}
         </ItemsCarousel>
-
-        :
-
-        <h2>No hay resultados</h2>
-
-        }
       </div>
     );
   }

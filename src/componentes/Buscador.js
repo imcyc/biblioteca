@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Document, Page, pdfjs } from 'react-pdf';
 import Container from 'react-bootstrap/Container';
 import Entrada from './Banners/Entrada';
@@ -19,8 +20,22 @@ class Buscador extends Component {
 
     this.state = {
       numPages: null, 
-      pageNumber: 1
+      pageNumber: 1,
+      documentos: [],
+      documentosFiltrados: []
     }
+  }
+
+  componentDidMount(){
+    axios.get('http://imcyc.com/biblioteca/apidocumentos.php')
+      .then(res => {
+        const docs = res.data;
+        this.setState(
+          { 
+            documentos: docs
+          }
+        );
+      })
   }
 
   onDocumentLoadSuccess = ({ numPages }) => {
@@ -38,7 +53,8 @@ class Buscador extends Component {
 
 
   render() {
-    const { pageNumber, numPages } = this.state;
+    const { pageNumber, numPages, documentos } = this.state;
+    const { categorias } = this.props;
     // Fibras%20de%20Acero
     const archivo = `http://imcyc.com/ArchivosPDF/${this.props.nombreSeccion}/${this.props.docNombre}`;
     return (  
@@ -50,13 +66,11 @@ class Buscador extends Component {
           <Row>
             <Col md={12}>
               
-              {this.props.categorias.map((categoria, key) => (
-                <Categorias key={key} idCategoria={categoria.id} categoria={categoria.name} seccion={categoria} />
+              {categorias.map((categoria) => (
+                <Categorias idCategoria={categoria.id} categoria={categoria.name} seccion={categoria} />
               ))}
 
-
               {/*
-              
               <ul>
                 {this.props.categorias.map((categoria, key) => (
                   <li key={key}>{categoria}</li>
@@ -67,14 +81,15 @@ class Buscador extends Component {
           </Row>
 
           <Row>
+            {/*
             <Col md={3}>
-              {/*
+              
               <ul className="categorias">
-                {this.props.categorias.map((categoria, key) => (
-                  <li key={key} onClick={() => this.props.categoriaClick(categoria)}>{categoria}</li>
+                {categorias.map((categoria) => (
+                  <li onClick={() => this.props.categoriaClick(categoria)}>{categoria}</li>
                 ))}
               </ul>
-              */}
+              
             </Col>
             <Col md={9}>
               <h2 style={{display: this.props.tituloSeccion ? 'block' : 'none'}}>DOCUMENTOS ENCONTRADOS</h2>
@@ -106,6 +121,7 @@ class Buscador extends Component {
                 </p>
               </div>
             </Col>
+                */}
           </Row>
         </Container>
       </div>
