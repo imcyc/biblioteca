@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import ItemsCarousel from 'react-items-carousel';
 
 import './Categorias.css';
@@ -16,7 +17,17 @@ class Categorias extends Component {
     }
   }
 
-  
+  componentDidMount(){
+    axios.get('http://imcyc.com/biblioteca/apidocumentos.php')
+      .then(res => {
+        const docs = res.data;
+        this.setState(
+          { 
+            documentos: docs
+          }
+        );
+      })
+  }
 
   changeActiveItem = (activeItemIndex) => this.setState({ activeItemIndex });
 
@@ -32,11 +43,8 @@ class Categorias extends Component {
     let name = documentos.map(documento => documento.name);
 
     return (
-      
       <div>
-        <h1 className="titCategoria"><i className="material-icons">keyboard_arrow_right</i> {this.props.categoria}</h1>
-        <p>{this.props.idCategoria}</p>
-        {category_id} contra {this.props.idCategoria}
+        <h1 className="titCategoria"><i className="material-icons">keyboard_arrow_right</i> {this.props.idCategoria}-{this.props.categoria}</h1>
         <ItemsCarousel
           enablePlaceholder
           numberOfPlaceholderItems={5}

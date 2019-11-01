@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import { Document, Page, pdfjs } from 'react-pdf';
 import Container from 'react-bootstrap/Container';
 import Entrada from './Banners/Entrada';
@@ -26,17 +26,7 @@ class Buscador extends Component {
     }
   }
 
-  componentDidMount(){
-    axios.get('http://imcyc.com/biblioteca/apidocumentos.php')
-      .then(res => {
-        const docs = res.data;
-        this.setState(
-          { 
-            documentos: docs
-          }
-        );
-      })
-  }
+  
 
   onDocumentLoadSuccess = ({ numPages }) => {
     this.setState({ 
