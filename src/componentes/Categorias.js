@@ -46,7 +46,7 @@ class Categorias extends Component {
         <h1 className="titCategoria"><i className="material-icons">keyboard_arrow_right</i> {this.props.categoria}</h1>
         <p>{this.props.idCategoria}</p>
 
-        {this.props.idCategoria === category_id ? 
+        {this.props.idCategoria == category_id ? 
 
         <ItemsCarousel
           enablePlaceholder
