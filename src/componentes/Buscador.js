@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from "react-router-dom";
 import { Document, Page, pdfjs } from 'react-pdf';
 import Container from 'react-bootstrap/Container';
 import Entrada from './Banners/Entrada';
@@ -21,12 +21,9 @@ class Buscador extends Component {
     this.state = {
       numPages: null, 
       pageNumber: 1,
-      documentos: [],
-      documentosFiltrados: []
+      documentos: []
     }
   }
-
-  
 
   onDocumentLoadSuccess = ({ numPages }) => {
     this.setState({ 
@@ -40,8 +37,6 @@ class Buscador extends Component {
   goToNextPage = () =>
     this.setState(state => ({ pageNumber: state.pageNumber + 1 }));
 
-
-
   render() {
     const { pageNumber, numPages, documentos } = this.state;
     const { categorias } = this.props;
@@ -52,12 +47,11 @@ class Buscador extends Component {
         <Container fluid={true}>
           <Entrada />
           <Search />
-
           <Row>
             <Col md={12}>
               
               {categorias.map((categoria) => (
-                <Categorias idCategoria={categoria.id} categoria={categoria.name} seccion={categoria} />
+                <Categorias idCategoria={categoria.id} nameCategoria={categoria.name} />
               ))}
 
               {/*
@@ -69,7 +63,6 @@ class Buscador extends Component {
               */}
             </Col>
           </Row>
-
           <Row>
             {/*
             <Col md={3}>

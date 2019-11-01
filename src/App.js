@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import Inicio from './componentes/Inicio';
 import Buscador from './componentes/Buscador';
+import Documento from './componentes/Documento';
 import './App.css';
 
 class App extends Component {
@@ -72,6 +73,12 @@ class App extends Component {
                     nombreSeccion={this.state.nombreSeccion}
                     docNombre={this.state.docNombre}
                     documentoClick={this.documentoClick}
+                    />}
+                />
+                <Route 
+                  exact 
+                  path="/documento" 
+                  render={(props) => <Documento {...props} 
                     />}
                 />
               </Switch>
