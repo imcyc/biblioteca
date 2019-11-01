@@ -10,37 +10,44 @@ class Categorias extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       documentos: []
     }
   }
 
-  componentWillMount() {
-
-    axios.get(`http://imcyc.com/biblioteca/documento.php?categoria=${this.props.seccion}`)
+  componentDidMount(){
+    axios.get('http://imcyc.com/biblioteca/apidocumentos.php')
       .then(res => {
-        const categoria = res.data;
-        this.setState({ 
-          documentos: categoria
-        });
+        const docs = res.data;
+        this.setState(
+          { 
+            documentos: docs
+          }
+        );
       })
-    
-    this.setState({
-      activeItemIndex: 0,
-    });
   }
 
   changeActiveItem = (activeItemIndex) => this.setState({ activeItemIndex });
 
   render() {
+    
     const {
       activeItemIndex,
       documentos,
     } = this.state;
 
+    let category_id = documentos.map(documento => documento.category_id);
+    let name = documentos.map(documento => documento.name);
+
     return (
+      
       <div>
-        <h1 className="titCategoria"><i class="material-icons">keyboard_arrow_right</i> {this.props.seccion}</h1>
+        <h1 className="titCategoria"><i className="material-icons">keyboard_arrow_right</i> {this.props.categoria}</h1>
+        <p>{this.props.idCategoria}</p>
+
+        {this.props.idCategoria === category_id ? 
+
         <ItemsCarousel
           enablePlaceholder
           numberOfPlaceholderItems={5}
@@ -59,8 +66,14 @@ class Categorias extends Component {
           leftChevron={'<'}
           outsideChevron={false}
         >
-          {documentos}
+          {name}
         </ItemsCarousel>
+
+        :
+
+        <h2>No hay resultados</h2>
+
+        }
       </div>
     );
   }

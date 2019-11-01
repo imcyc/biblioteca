@@ -16,11 +16,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    axios.get(`http://imcyc.com/biblioteca/categorias.php`)
+    axios.get('http://imcyc.com/biblioteca/apicategorias.php')
       .then(res => {
         const categorias = res.data;
         this.setState({ categorias });
       })
+    
   }
 
   categoriaClick = (categoria) => {
@@ -49,6 +50,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <HashRouter basename='/'>
           <div>

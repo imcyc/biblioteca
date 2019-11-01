@@ -51,7 +51,7 @@ class Buscador extends Component {
             <Col md={12}>
               
               {this.props.categorias.map((categoria, key) => (
-                <Categorias key={key} seccion={categoria} />
+                <Categorias key={key} idCategoria={categoria.id} categoria={categoria.name} seccion={categoria} />
               ))}
 
 
