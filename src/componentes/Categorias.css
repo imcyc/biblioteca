@@ -6,13 +6,14 @@ h1.titCategoria {
 
 .sc-bxivhb {
   display: flex;
-    align-items: center;
-    text-align: center;
-    background: #222;
-    font-size: 0.7em;
-    height: 150px;
-    font-weight: 300;
-    padding: 10px;
-    border: 3px solid #333;
-    overflow: hidden;
+  align-items: center;
+  text-align: center;
+  background: #222;
+  font-size: 0.5em;
+  line-height: 1.5em;
+  height: 150px;
+  font-weight: 300;
+  padding: 10px;
+  border: 3px solid #333;
+  overflow: hidden;
 }

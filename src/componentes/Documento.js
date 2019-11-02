@@ -1,4 +1,5 @@
 import React from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
 
 const Documento = () => {
   return ( 

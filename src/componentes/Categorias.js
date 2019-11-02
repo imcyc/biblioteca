@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ItemsCarousel from 'react-items-carousel';
+import { Link } from "react-router-dom";
 
 import './Categorias.css';
 
@@ -33,7 +34,11 @@ class Categorias extends Component {
       documentos,
     } = this.state;
 
-    let name = documentos.map(documento => documento.name);
+    //let name = documentos.map(documento => <Link to=''>documento.name</Link>);
+
+    let name = documentos.map(documento => (
+      `<Link to=''>${documento.name}</Link>`
+    ));
 
     return (
       <div>
@@ -53,8 +58,8 @@ class Categorias extends Component {
           activeItemIndex={activeItemIndex}
           activePosition={'center'}
           chevronWidth={24}
-          rightChevron={'>'}
-          leftChevron={'<'}
+          rightChevron={<button>{'>'}</button>}
+          leftChevron={<button>{'<'}</button>}
           outsideChevron={false}
         >
           {name}
