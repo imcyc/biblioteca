@@ -51,6 +51,17 @@ class App extends Component {
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
+  BuscadorCategos = (event) => {
+    let value = event.target.value;
+    let buscaResultados = this.state.categorias.filter(categoria => categoria.name === value);
+    console.log(value);
+    console.log('buscador');
+    this.setState({
+      categorias: buscaResultados
+    })
+    console.log(this.state.categorias);
+  }
+
   render() {
 
     return (
@@ -74,6 +85,7 @@ class App extends Component {
                     nombreSeccion={this.state.nombreSeccion}
                     docNombre={this.state.docNombre}
                     documentoClick={this.documentoClick}
+                    BuscadorCategos={this.BuscadorCategos}
                     />}
                 />
                 <Route 

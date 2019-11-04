@@ -1,0 +1,9 @@
+.card.card-sm {
+  border-radius: 0;
+    background-color: transparent;
+    margin: 20px 0;
+    border: 0;
+}
+.form-control-lg, .btn-group-lg>.btn, .btn-lg {
+  border-radius: 0;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ItemsCarousel from 'react-items-carousel';
 import { Link } from "react-router-dom";
+import Loader from'../images/loader.gif';
 
 import './Categorias.css';
 
@@ -9,12 +10,10 @@ class Categorias extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       activeItemIndex: 0,
       documentos: []
     }
-
   }
 
   componentDidMount(){
@@ -36,9 +35,10 @@ class Categorias extends Component {
 
     //let name = documentos.map(documento => <Link to=''>documento.name</Link>);
 
-    let name = documentos.map(documento => (
-      <Link to="/documento" className="docum">
-        {documento.name}
+    let name = documentos.map((documento, index) => (
+      <Link to="/documento" className="docum" key={index}>
+        {documento.name}<br/>
+        <span className="paginas">No. de Páginas: {documento.paginas}</span>
       </Link>
     ));
 
@@ -55,7 +55,7 @@ class Categorias extends Component {
           enablePlaceholder
           numberOfPlaceholderItems={5}
           minimumPlaceholderTime={1000}
-          placeholderItem={<div style={{ height: 200, background: '#000' }}>Placeholder</div>}
+          placeholderItem={<div style={{ height: 100, background: '#fff', textAlign: 'center', width: '100%' }}><img src={Loader} title={this.props.nameCategoria} style={{width: '100px'}}></img></div>}
           numberOfCards={4}
           gutter={12}
           showSlither={true}
