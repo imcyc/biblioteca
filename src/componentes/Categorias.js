@@ -37,12 +37,19 @@ class Categorias extends Component {
     //let name = documentos.map(documento => <Link to=''>documento.name</Link>);
 
     let name = documentos.map(documento => (
-      `<Link to=''>${documento.name}</Link>`
+      <Link to="/documento" className="docum">
+        {documento.name}
+      </Link>
     ));
 
     return (
       <div>
-        <h1 className="titCategoria"><i className="material-icons">keyboard_arrow_right</i> {this.props.idCategoria}-{this.props.nameCategoria}</h1>
+        <h1 className="titCategoria">
+          <Link to="categoria">
+            <i className="material-icons">keyboard_arrow_right</i> 
+            {this.props.nameCategoria}
+          </Link>
+        </h1>
         
         <ItemsCarousel
           enablePlaceholder
@@ -58,8 +65,8 @@ class Categorias extends Component {
           activeItemIndex={activeItemIndex}
           activePosition={'center'}
           chevronWidth={24}
-          rightChevron={<button>{'>'}</button>}
-          leftChevron={<button>{'<'}</button>}
+          rightChevron={<button className='btnswipe right'>{'>'}</button>}
+          leftChevron={<button className='btnswipe left'>{'<'}</button>}
           outsideChevron={false}
         >
           {name}
