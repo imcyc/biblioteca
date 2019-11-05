@@ -14,7 +14,8 @@ class App extends Component {
     categoria: [],
     tituloSeccion: false,
     nombreSeccion: '',
-    docNombre: ''
+    docNombre: '',
+    busquedaPalabra: ''
   }
 
   componentDidMount(){
@@ -53,13 +54,16 @@ class App extends Component {
 
   BuscadorCategos = (event) => {
     let value = event.target.value;
-    let buscaResultados = this.state.categorias.filter(categoria => categoria.name === value);
     console.log(value);
+    /*
+    let buscaResultados = this.state.categorias.filter(categoria => categoria.name === value);
+    console.log(buscaResultados);
     console.log('buscador');
     this.setState({
       categorias: buscaResultados
     })
     console.log(this.state.categorias);
+    */
   }
 
   render() {

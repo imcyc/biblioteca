@@ -13,7 +13,7 @@ const Entrada = (props) => {
         <p>Instituto Mexicano del Cemento y del Concreto A.C.</p>
         <h3>ACERVO DIGITAL</h3>
         <h4>COMPARTIR EL CONOCIMIENTO</h4>
-        <p>Más de 5,000 títulos sobre CEMENTO y CONCRETO al alcance de su mano.</p>
+        <p>Más de 5,000 títulos sobre CEMENTO y CONCRETO al alcance de su mano</p>
         <hr/>
       </Col>
     </Row>

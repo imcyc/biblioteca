@@ -3,6 +3,7 @@ import axios from 'axios';
 import ItemsCarousel from 'react-items-carousel';
 import { Link } from "react-router-dom";
 import Loader from'../images/loader.gif';
+import pdf from '../images/pdf.png';
 
 import './Categorias.css';
 
@@ -37,6 +38,7 @@ class Categorias extends Component {
 
     let name = documentos.map((documento, index) => (
       <Link to="/documento" className="docum" key={index}>
+        <img src={pdf} title={this.props.nameCategoria} alt={this.props.nameCategoria} style={{width: '90%',marginBottom: '10px'}} />
         {documento.name}<br/>
         <span className="paginas">No. de Páginas: {documento.paginas}</span>
       </Link>
