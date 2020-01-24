@@ -9,13 +9,17 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-    categorias: [],
-    categoria: [],
-    tituloSeccion: false,
-    nombreSeccion: '',
-    docNombre: '',
-    busquedaPalabra: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      categorias: [],
+      categoria: [],
+      tituloSeccion: false,
+      nombreSeccion: '',
+      docNombre: '',
+      busquedaPalabra: ''
+    }
+    this.BuscadorCategos = this.BuscadorCategos.bind(this);
   }
 
   componentDidMount(){
@@ -24,7 +28,6 @@ class App extends Component {
         const categorias = res.data;
         this.setState({ categorias });
       })
-    
   }
 
   categoriaClick = (categoria) => {
@@ -59,9 +62,12 @@ class App extends Component {
     let buscaResultados = this.state.categorias.filter(categoria => categoria.name === value);
     console.log(buscaResultados);
     console.log('buscador');
+    */
+    let remove = this.state.categorias.map(function(categoria) { return categoria.name; }).indexOf(event.target.value);
     this.setState({
-      categorias: buscaResultados
+      categorias: this.state.categorias.filter((_, i) => i === remove)
     })
+    /*
     console.log(this.state.categorias);
     */
   }
